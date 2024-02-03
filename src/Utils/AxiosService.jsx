@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const AxiosService = axios.create({
-    baseURL: 'http://localhost:4000/',
+    baseURL: 'https://auth-wxak.onrender.com/',
    
     headers: {'content-type': 'application/json'}
   });
