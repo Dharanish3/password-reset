@@ -21,9 +21,9 @@ function SignIn() {
         sessionStorage.setItem('role',res.data.role)
 
         if(res.data.role=== 'Admin'){
-          navigate ('/admin')
+          navigate ('/url-create')
         }else if (res.data.role === 'User'){
-            navigate('/user')
+            navigate('/url-create ')
         }
       }
     } catch (error) {
