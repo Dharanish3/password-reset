@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const AxiosService = axios.create({
-    baseURL: 'http://auth-wxak.onrender.com/',
+    baseURL: 'https://auth-wxak.onrender.com',
    
     headers: {'content-type': 'application/json'}
   });
@@ -16,6 +16,6 @@ AxiosService.interceptors.request.use((config) => {
     // Do something with request error
     return Promise.reject(error);
   })
-
+s
 
 export default AxiosService;
