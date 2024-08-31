@@ -23,7 +23,7 @@ function SignIn() {
         if(res.data.role=== 'Admin'){
           navigate ('/url-create')
         }else if (res.data.role === 'User'){
-            navigate('/url-create ')
+            navigate('/url-create')
         }
       }
     } catch (error) {
