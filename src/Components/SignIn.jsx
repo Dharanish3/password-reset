@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
+
 function SignIn() {
   const navigate = useNavigate()
   const handleSubmit = async (e) => {
@@ -21,9 +22,9 @@ function SignIn() {
         sessionStorage.setItem('role',res.data.role)
 
         if(res.data.role=== 'Admin'){
-          navigate ('/url-create')
+          navigate ('/admin')
         }else if (res.data.role === 'User'){
-            navigate('/url-create')
+            navigate('/user')
         }
       }
     } catch (error) {

@@ -11,7 +11,7 @@ function SignIn() {
     try {
       e.preventDefault(); 
 
-      const formData = new FormData(e.target);
+      const formData = new FormData(e.target); 
       const formProps = Object.fromEntries(formData);
       let res = await AxiosService.post(`${ApiRoutes.FORGOT.path}`,formProps)
       if(res.status === 200){

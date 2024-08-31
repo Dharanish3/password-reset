@@ -13,7 +13,6 @@ AxiosService.interceptors.request.use((config) => {
     config.headers.Authorization = token ? `Bearer ${token}` : null; 
     return config
 }, (error) => {
-    // Do something with request error
     return Promise.reject(error);
   })
 

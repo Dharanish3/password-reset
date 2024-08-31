@@ -8,6 +8,7 @@ const ApiRoutes = {
         authenticate : false
        
     },
+    
     URL_CREATE: {
         path : '/shortUrl',
         authenticate : false

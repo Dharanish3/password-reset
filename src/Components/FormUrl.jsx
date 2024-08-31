@@ -32,6 +32,7 @@ function FormUrl() {
     }
   };
 
+  
   return (
     <>
     <br />
@@ -44,7 +45,7 @@ function FormUrl() {
           name="full"
         />
         <Button variant="success" type="submit">
-          Submit
+          Submit 
         </Button>
       </form>
     </>

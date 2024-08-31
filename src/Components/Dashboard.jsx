@@ -5,16 +5,18 @@ import useLogout from "../Hooks/Logout";
 import { toast } from "react-toastify";
 import Topbar from "./TopBar";
 import Table from "react-bootstrap/Table";
+import Form from "react-bootstrap/Form"; // Import Form for Dropdown and Search
 
 function Dashboard() {
   const [user, setUser] = useState([]);
+  const [searchName, setSearchName] = useState("");
+  const [selectedRole, setSelectedRole] = useState("");
   let logout = useLogout();
 
   const getData = async () => {
     try {
       const res = await AxiosService.get(`${ApiRoutes.GET_USER.path}`);
       if (res.status === 200) {
-        
         setUser(res.data.user);
       }
     } catch (error) {
@@ -27,9 +29,44 @@ function Dashboard() {
     getData();
   }, []);
 
+ 
+  const filteredUsers = user.filter((e) => {
+    return (
+      (e.name.toLowerCase().includes(searchName.toLowerCase())) &&
+      (selectedRole ? e.role === selectedRole : true)
+    );
+  });
+
+  
+  const roles = [...new Set(user.map((e) => e.role))];
+
   return (
     <>
       <Topbar />
+
+      <Form.Group className="mb-3" controlId="search">
+        <Form.Control
+          type="text"
+          placeholder="Search Name"
+          value={searchName}
+          onChange={(e) => setSearchName(e.target.value)}
+        />
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="roleFilter">
+        <Form.Select
+          value={selectedRole}
+          onChange={(e) => setSelectedRole(e.target.value)}
+        >
+          <option value="">Roles</option>
+          {roles.map((role, index) => (
+            <option key={index} value={role}>
+              {role}
+            </option>
+          ))}
+        </Form.Select>
+      </Form.Group>
+
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -41,7 +78,7 @@ function Dashboard() {
           </tr>
         </thead>
         <tbody>
-          {user.map((e, i) => (
+          {filteredUsers.map((e, i) => (
             <tr key={e._id}>
               <td>{i + 1}</td>
               <td>{e.name}</td>
